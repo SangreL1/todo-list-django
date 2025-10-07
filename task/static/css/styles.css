@@ -1,0 +1,32 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.text-decoration-line-through {
+    text-decoration: line-through;
+}
+
+.btn-sm {
+    font-size: 0.85rem;
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+}
+
+
+.text-muted {
+    font-style: italic;
+}

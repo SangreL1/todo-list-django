@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Tareas{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">📋 Lista de Tareas</h2>
+
+<!-- Botón para crear nueva tarea -->
+<div class="mb-3 text-end">
+    <a href="{% url 'task_create' %}" class="btn btn-success">+ Nueva Tarea</a>
+</div>
+
+<!-- Lista de tareas -->
+<div class="row">
+    {% for t in task %}
+    <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card shadow-sm {% if t.completed %}border-success{% endif %}">
+            <div class="card-body">
+                <h5 class="card-title {% if t.completed %}text-decoration-line-through text-success{% endif %}">
+                    {{ t.title }}
+                </h5>
+                <p class="card-text">{{ t.descripcion|default:"Sin descripción" }}</p>
+                <p class="text-muted small">Creada: {{ t.created_at|date:"d/m/Y H:i" }}</p>
+
+                <div class="d-flex justify-content-between mt-3">
+                    <a href="{% url 'task_update' t.id %}" class="btn btn-sm btn-warning">Editar</a>
+                    <form action="{% url 'task_delete' t.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                    </form>
+                </div>
+
+                {% if not t.completed %}
+                <form action="{% url 'task_complete' t.id %}" method="post" class="mt-2">
+                    {% csrf_token %}
+                    <input type="hidden" name="completed" value="True">
+                    <button type="submit" class="btn btn-sm btn-success w-100">Marcar como completada ✅</button>
+                </form>
+                {% endif %}
+                    {% if t.completed %}
+                    <form action="{% url 'task_uncomplete' t.id %}" method="post" class="mt-2">
+                        {% csrf_token %}
+                        <input type="hidden" name="completed" value="False">
+                        <button type="submit" class="btn btn-sm btn-secondary w-100">Marcar como no completada ❌</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p class="text-center text-muted">No tienes tareas aún. ¡Agrega una nueva!</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
