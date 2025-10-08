@@ -7,6 +7,8 @@ Permite crear, editar, marcar como completadas y eliminar tareas de manera inter
 
  **BloodL**
 
+⚠️ **Atención**: Este proyecto es una versión simple de ejemplo. Todas las tareas se muestran para todos los usuarios, sin privacidad individual.
+
 ## 🚀 Funcionalidades
 
 - Crear nuevas tareas con título y descripción.
