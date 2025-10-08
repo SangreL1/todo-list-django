@@ -4,7 +4,7 @@ Proyecto de lista de tareas desarrollado con **Django**, **Bootstrap**, **MySQL*
 Permite crear, editar, marcar como completadas y eliminar tareas de manera interactiva.
 
 
-🌐 bloodl.pythonanywhere.com/
+🌐 https://bloodl.pythonanywhere.com/
 
 ✨ Autor
 
